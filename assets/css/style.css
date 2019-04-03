@@ -1,0 +1,20 @@
+.background{
+    background-image: url(../images/namek.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+.jumbotron, .noBack{
+    background: none;
+}
+*{
+    font-family: 'Luckiest Guy', cursive;
+}
+.btn-primary{
+    background-color: black;
+    border-color: black;
+}
+.badge{
+    padding:1em 2.5em;
+    font-weight: 100;
+    font-size: 20px;
+}
