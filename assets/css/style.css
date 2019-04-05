@@ -1,3 +1,6 @@
+body{
+    background-color: rgb(30, 30, 128);
+}
 .background{
     background-image: url(../images/namek.jpg);
     background-repeat: no-repeat;
