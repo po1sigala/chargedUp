@@ -8,27 +8,66 @@ $(document).ready(function() {
 var wins = 0;
 var losses = 0
 var powerLevel=0;
-var transformation= Math.floor((Math.random()*1000 +1));
+var transformation= Math.floor((Math.random()*1000 +1))*5;
 
 console.log (transformation);
 console.log(powerLevel);
-powerup1= Math.floor((Math.random()*20 +1)*5);//random number from 1-100 that ends in 5 or 0
-var powerup2 = Math.floor((Math.random()*20 +1)*5 + 1);//random number from 1-100 that ends in 6 or 1
-var powerup3= Math.floor((Math.random()*20 +1)*5 + 2);;//random number from 1-100 that ends in 2 or 7
-var powerup4= Math.floor((Math.random()*20 +1)*5 + 3);;//random number from 1-100 that ends in 3 or 8
+var powerup1= Math.floor((Math.random()*20+1))*5;//random number from 1-100 that ends in 5 or 0
+console.log(powerup1);
+var powerup2 = Math.floor((Math.random()*10+1))*5;//random number from 1-50 that ends in 5 or 0
+console.log(powerup2)
+var powerup3= Math.floor((Math.random()*100+1))*5;//random number from 1-500 that ends in 5 or 0
+console.log(powerup3);
+var powerup4= 5;
+console.log(powerup4);
+
+
 function loss(){
     losses++;
-    $("losses").text(losses);
+    $("#losses").text(losses);
     console.log(losses);
-    $(".mr-3").attr("src", "assets/images/exhausted.gif");
-    // $('.toast').toast('show');
+    // $(".mr-3").attr("src", "assets/images/exhausted.gif");
+    // $(".mr-3").css()
+    // setTimeout(function(){ 
+    //     $(".mr-3").attr("src", "assets/images/charging.gif");;
+    // }, 2000);
+    // $(".media-body").append("<h5>Great... you killed him. click to continue or refresh the page to start over </h5>");
+    // $(".dragonBall").hide();
+    alert("loser")
+    
+    nextround();
 }
 function win(){
     wins++;
     $("#wins").text(wins);
-    $(".mr-3").attr("src", "assets/images/transform.gif");
+    // $(".mr-3").attr("src", "assets/images/transform.gif");
+    // $(".mr-3").animate({height: "300px"});
     alert("victory");
+    nextround();
 }
+
+function nextround(){
+
+powerLevel=0;
+transformation= Math.floor((Math.random()*1000 +1))*5;
+powerup1= Math.floor((Math.random()*20+1))*5;//random number from 1-100 that ends in 5 or 0
+console.log(powerup1);
+powerup2 = Math.floor((Math.random()*10+1))*5;//random number from 1-50 that ends in 5 or 0
+console.log(powerup2)
+powerup3= Math.floor((Math.random()*100+1))*5;//random number from 1-500 that ends in 5 or 0
+console.log(powerup3);
+powerup4= 5;
+$("#powerLevel").text(powerLevel);
+$(".badge").text(transformation)
+}
+
+$(".reset").on("click", function(event){
+ nextround();
+ wins= 0;
+ $("#wins").text(wins);
+ losses=0;
+ $("#losses").text(losses);
+})
 $(".badge").text(transformation);
 $(".dragonBall").hover(function(){
         $(this).animate({ opacity: ".5" }); 
@@ -36,6 +75,7 @@ $(".dragonBall").hover(function(){
         $(this).animate({opacity:"1"})
         ;
     });
+
 $("#oneStar").on("click", function(){
     
     $("#powerLevel").text(powerLevel+powerup1);
@@ -47,7 +87,6 @@ $("#oneStar").on("click", function(){
         loss();
     }
 
- 
 })
 
 $("#twoStar").on("click", function(){    
